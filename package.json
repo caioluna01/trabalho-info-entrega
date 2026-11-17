@@ -1,0 +1,14 @@
+{
+  "name": "oficina-ordens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MVP acadêmico para registro e consulta de ordens de serviço",
+  "type": "module",
+  "engines": { "node": ">=24.0.0 <25" },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test testes/*.test.js",
+    "ver-banco": "node scripts/ver-banco.js"
+  },
+  "dependencies": { "express": "^5.1.0" }
+}

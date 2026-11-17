@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cadastro e consulta de ordens de serviço de uma oficina mecânica.">
+  <title>Oficina Ordens | Ordens de serviço</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo-conteudo">
+      <div class="marca">Oficina <strong>Ordens</strong></div>
+      <nav aria-label="Navegação principal">
+        <a href="#cadastro">Nova ordem</a>
+        <a href="#consulta">Consultar ordens</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="introducao">
+      <p class="sobretitulo">CONTROLE DA OFICINA</p>
+      <h1>Ordens de serviço</h1>
+      <p>Registre a necessidade do veículo e consulte as ordens cadastradas.</p>
+    </div>
+
+    <div class="layout">
+      <section id="cadastro" class="painel cadastro" aria-labelledby="titulo-cadastro">
+        <div class="cabecalho-painel">
+          <h2 id="titulo-cadastro">Nova ordem</h2>
+          <p>Preencha os dados do atendimento. Campos com * são obrigatórios.</p>
+        </div>
+
+        <form id="form-ordem">
+          <div class="campo">
+            <label for="veiculo">Veículo <span aria-hidden="true">*</span></label>
+            <input id="veiculo" name="veiculo" required maxlength="150" placeholder="Ex.: Fiat Uno · ABC1D23" aria-describedby="ajuda-veiculo">
+            <small id="ajuda-veiculo">Informe o modelo e, se disponível, a placa.</small>
+          </div>
+          <div class="campo">
+            <label for="descricao">Descrição do problema ou serviço <span aria-hidden="true">*</span></label>
+            <textarea id="descricao" name="descricao" required maxlength="2000" rows="4" placeholder="Descreva o que foi informado pelo cliente."></textarea>
+          </div>
+          <div class="campo">
+            <label for="servico">Serviço solicitado <span class="opcional">opcional</span></label>
+            <input id="servico" name="servicoSolicitado" maxlength="200" placeholder="Ex.: Revisão dos freios">
+          </div>
+          <div class="campo">
+            <label for="valor">Valor estimado (R$) <span class="opcional">opcional</span></label>
+            <input id="valor" name="valorEstimado" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0,00">
+          </div>
+          <div class="acoes-form">
+            <p class="nota">A ordem será registrada com status <strong>Aberta</strong>.</p>
+            <button class="primario" id="cadastrar" type="submit">Cadastrar ordem</button>
+          </div>
+          <div id="mensagem-form" class="mensagem" role="status" aria-live="polite" aria-atomic="true"></div>
+        </form>
+      </section>
+
+      <section id="consulta" class="painel consulta" aria-labelledby="titulo-lista">
+        <div class="cabecalho-painel cabecalho-lista">
+          <div>
+            <h2 id="titulo-lista">Ordens cadastradas</h2>
+            <p id="contagem">Consultando ordens…</p>
+          </div>
+          <button id="atualizar" type="button" class="secundario">Atualizar lista</button>
+        </div>
+        <div id="mensagem-lista" class="mensagem" role="status" aria-live="polite" aria-atomic="true"></div>
+        <div id="lista" aria-busy="true"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span>Oficina Ordens <span class="separador" aria-hidden="true">/</span> Cadastro e consulta de serviços</span>
+    <span>Projeto acadêmico</span>
+  </footer>
+</body>
+</html>
